@@ -1,28 +1,27 @@
-const carousel = document.querySelector('.carousel__container');
-const prevButton = document.querySelector('.carousel__button--prev');
-const nextButton = document.querySelector('.carousel__button--next');
+const carousel = document.querySelector(".carousel__container");
+const prevButton = document.querySelector(".carousel__button--prev");
+const nextButton = document.querySelector(".carousel__button--next");
 
-// Récupère le premier item pour calculer sa largeur
-const premierItem = document.querySelector('.carousel__item');
-
-// Calcule dynamiquement la largeur de défilement
-let scrollAmount = 276; // Valeur par défaut
-
-if (premierItem) {
-    // clientWidth donne la largeur de l'élément (260px)
-    // On ajoute le gap de 16px pour avoir la distance totale
-    scrollAmount = premierItem.clientWidth + 16;
+/**
+ * Calcule la distance de défilement à chaque clic
+ * → largeur réelle de la première slide + le gap (16px)
+ */
+function getScrollAmount() {
+    const firstItem = document.querySelector(".carousel__item");
+    if (!firstItem) return 0;
+    const itemWidth = firstItem.getBoundingClientRect().width;
+    const gap = 16; // même valeur que dans le CSS (gap: 16px)
+    return itemWidth + gap;
 }
 
-// Largeur de défilement d'un item
-if (carousel) {
-    // Scroll au clic sur le bouton précédent
+if (carousel && prevButton && nextButton) {
     prevButton.addEventListener("click", () => {
-        carousel.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+        const amount = getScrollAmount();
+        carousel.scrollBy({ left: -amount, behavior: "smooth" });
     });
 
-    // Scroll au clic sur le bouton suivant
     nextButton.addEventListener("click", () => {
-        carousel.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+        const amount = getScrollAmount();
+        carousel.scrollBy({ left: amount, behavior: "smooth" });
     });
 }

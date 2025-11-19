@@ -1,136 +1,66 @@
-/* Limite la largeur maximale de l'image à 100% de son conteneur */
+/* Image responsive par défaut */
 img {
   max-width: 100%;
   height: auto;
+  display: block;
 }
 
-/* Contrôles du carousel */
-.carousel__controls {
-  position: absolute;
-  top: 50%;
-  left: 0;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  pointer-events: none;
-  transform: translateY(-50%);
-  z-index: 2;
-  padding: 0 12px;
-  margin: 0;
+/* Bloc global du carrousel */
+.carousel {
+  position: relative;
+  /* Pour positionner les boutons en absolu */
+  max-width: 100%;
+  margin: 0 auto;
 }
 
-.carousel__button {
-  width: 50px;
-  height: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid #333;
-  border-radius: 50%;
-  background: white;
-  cursor: pointer;
-  transition: background-color 0.3s;
-  pointer-events: auto;
-}
-
-.carousel__button:hover {
-  background-color: #f0f0f0;
-}
-
-.carousel__button--prev {
-  transform: rotate(180deg);
-}
-
-/* Liens d'ancre du carousel */
-.carousel__anchors {
-  display: flex;
-  gap: 16px;
-  align-items: center;
-  justify-content: center;
-  margin: 16px 0;
-}
-
-.carousel__anchor {
-  width: 50px;
-  height: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid #333;
-  border-radius: 50%;
-  background: white;
-  cursor: pointer;
-  transition: background-color 0.3s, color 0.3s;
-  font-size: 1.2rem;
-  text-decoration: none;
-  color: #333;
-}
-
-.carousel__anchor:hover,
-.carousel__anchor:focus {
-  background-color: #f0f0f0;
-  color: #0078d7;
-  outline: none;
-}
-
-/* Conteneur du carousel */
+/* Conteneur des slides */
 .carousel__container {
   display: flex;
   gap: 16px;
-  overflow-x: scroll;
-  margin-left: -24px;
-  margin-right: -24px;
-  padding-left: 24px;
-  padding-right: 24px;
+  overflow-x: auto;
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
-
-  /* Cache la barre de scroll pour un meilleur visuel */
+  /* Smooth au scroll & via JS */
+  padding: 0 16px;
   scrollbar-width: none;
-  /* Firefox */
+  /* Firefox : cacher la scrollbar */
   -ms-overflow-style: none;
   /* IE/Edge */
 }
 
 .carousel__container::-webkit-scrollbar {
   display: none;
-  /* Chrome, Safari, Opera */
+  /* Chrome/Safari/Opera : cacher la scrollbar */
 }
 
-/* Items du carousel - TAILLES RESPONSIVE */
+/* Slide du carousel : RESPONSIVE */
 .carousel__item {
-  /* Taille proportionnelle à l'écran */
-  flex: 0 0 70vw;
-  /* 70% de la largeur de l'écran sur mobile */
+  flex: 0 0 80vw;
+  /* Sur mobile : 80% de la largeur de l'écran */
   scroll-snap-align: center;
 }
 
 .carousel__item img {
-  display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  /* Garde les proportions de l'image */
   border-radius: 8px;
-  /* Optionnel : coins arrondis */
 }
 
-/* Tablettes (écrans moyens) */
+/* Tablettes */
 @media (min-width: 768px) {
   .carousel__item {
     flex: 0 0 45vw;
-    /* 45% de la largeur de l'écran */
+    /* ~2 slides visibles */
   }
 }
 
-/* Desktop (grands écrans) */
+/* Desktop */
 @media (min-width: 1024px) {
   .carousel__item {
     flex: 0 0 30vw;
-    /* 30% de la largeur de l'écran */
+    /* ~3 slides visibles */
     max-width: 400px;
-    /* Limite maximale pour très grands écrans */
   }
 }
 
@@ -142,7 +72,85 @@ img {
   }
 }
 
-/* Classe utilitaire pour masquer visuellement */
+/* Contrôles du carousel (flèches) */
+.carousel__controls {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transform: translateY(-50%);
+  pointer-events: none;
+  /* Pour que seules les flèches prennent les clics */
+  padding: 0 12px;
+  z-index: 2;
+}
+
+.carousel__button {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  border: 1px solid #333;
+  background-color: #fff;
+  cursor: pointer;
+  pointer-events: auto;
+  /* Réactive les clics sur les boutons */
+  transition: background-color 0.2s, transform 0.2s;
+}
+
+.carousel__button img {
+  width: 24px;
+  height: 24px;
+}
+
+.carousel__button:hover {
+  background-color: #f0f0f0;
+  transform: scale(1.05);
+}
+
+.carousel__button--prev {
+  transform: translateY(0) rotate(180deg);
+}
+
+/* Liste des ancres */
+.carousel__anchors {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: center;
+  margin: 16px 0;
+}
+
+.carousel__anchor {
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  border: 1px solid #333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  text-decoration: none;
+  font-size: 1rem;
+  color: #333;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s, transform 0.2s;
+}
+
+.carousel__anchor:hover,
+.carousel__anchor:focus {
+  background-color: #333;
+  color: #fff;
+  transform: scale(1.05);
+  outline: none;
+}
+
+/* Classe utilitaire pour accessibilité */
 .sr-only {
   position: absolute;
   width: 1px;

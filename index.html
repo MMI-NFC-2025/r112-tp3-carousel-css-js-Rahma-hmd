@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
   <meta charset="UTF-8">
@@ -11,10 +11,12 @@
 
 <body>
   <h1>Test Carousel</h1>
+
   <div class="carousel" aria-labelledby="carousel-heading">
     <h2 id="carousel-heading" class="carousel__heading sr-only">
       Carousel d'images musicales
     </h2>
+
     <div class="carousel__container" role="region" aria-live="polite">
       <div class="carousel__item" id="item1">
         <img src="/assets/img/agenda-01.avif" alt="Image musique 1" />
@@ -32,6 +34,8 @@
         <img src="/assets/img/agenda-05.avif" alt="Image musique 5" />
       </div>
     </div>
+
+    <!-- Ancres -->
     <nav class="carousel__anchors" aria-label="Navigation des items du carousel">
       <a href="#item1" class="carousel__anchor" aria-label="Aller à l'image 1">1</a>
       <a href="#item2" class="carousel__anchor" aria-label="Aller à l'image 2">2</a>
@@ -39,15 +43,16 @@
       <a href="#item4" class="carousel__anchor" aria-label="Aller à l'image 4">4</a>
       <a href="#item5" class="carousel__anchor" aria-label="Aller à l'image 5">5</a>
     </nav>
-  </div>
-  <div class="carousel__controls">
-    <button class="carousel__button carousel__button--prev" aria-label="Défiler vers la gauche">
-      <img src="/assets/icones/icon_arrowcarrousel.svg" alt="fleche gauche" />
-    </button>
-    <button class="carousel__button carousel__button--next" aria-label="Défiler vers la droite">
-      <img src="/assets/icones/icon_arrowcarrousel.svg" alt="fleche droite" />
-    </button>
-  </div>
+
+    <!-- Boutons sur le carrousel -->
+    <div class="carousel__controls">
+      <button class="carousel__button carousel__button--prev" aria-label="Défiler vers la gauche">
+        <img src="/assets/icones/icon_arrowcarrousel.svg" alt="flèche gauche" />
+      </button>
+      <button class="carousel__button carousel__button--next" aria-label="Défiler vers la droite">
+        <img src="/assets/icones/icon_arrowcarrousel.svg" alt="flèche droite" />
+      </button>
+    </div>
   </div>
 </body>
 
