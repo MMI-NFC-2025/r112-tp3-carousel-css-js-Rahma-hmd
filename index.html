@@ -16,30 +16,38 @@
       Carousel d'images musicales
     </h2>
     <div class="carousel__container" role="region" aria-live="polite">
-      <div class="carousel__item">
+      <div class="carousel__item" id="item1">
         <img src="/assets/img/agenda-01.avif" alt="Image musique 1" />
       </div>
-      <div class="carousel__item">
+      <div class="carousel__item" id="item2">
         <img src="/assets/img/agenda-02.avif" alt="Image musique 2" />
       </div>
-      <div class="carousel__item">
+      <div class="carousel__item" id="item3">
         <img src="/assets/img/agenda-03.avif" alt="Image musique 3" />
       </div>
-      <div class="carousel__item">
+      <div class="carousel__item" id="item4">
         <img src="/assets/img/agenda-04.avif" alt="Image musique 4" />
       </div>
-      <div class="carousel__item">
+      <div class="carousel__item" id="item5">
         <img src="/assets/img/agenda-05.avif" alt="Image musique 5" />
       </div>
     </div>
-    <div class="carousel__controls">
-      <button class="carousel__button carousel__button--prev" aria-label="Défiler vers la gauche">
-        <img src="/assets/icones/icon_arrowcarrousel.svg" alt="fleche gauche" />
-      </button>
-      <button class="carousel__button carousel__button--next" aria-label="Défiler vers la droite">
-        <img src="/assets/icones/icon_arrowcarrousel.svg" alt="fleche droite" />
-      </button>
-    </div>
+    <nav class="carousel__anchors" aria-label="Navigation des items du carousel">
+      <a href="#item1" class="carousel__anchor" aria-label="Aller à l'image 1">1</a>
+      <a href="#item2" class="carousel__anchor" aria-label="Aller à l'image 2">2</a>
+      <a href="#item3" class="carousel__anchor" aria-label="Aller à l'image 3">3</a>
+      <a href="#item4" class="carousel__anchor" aria-label="Aller à l'image 4">4</a>
+      <a href="#item5" class="carousel__anchor" aria-label="Aller à l'image 5">5</a>
+    </nav>
+  </div>
+  <div class="carousel__controls">
+    <button class="carousel__button carousel__button--prev" aria-label="Défiler vers la gauche">
+      <img src="/assets/icones/icon_arrowcarrousel.svg" alt="fleche gauche" />
+    </button>
+    <button class="carousel__button carousel__button--next" aria-label="Défiler vers la droite">
+      <img src="/assets/icones/icon_arrowcarrousel.svg" alt="fleche droite" />
+    </button>
+  </div>
   </div>
 </body>
 
