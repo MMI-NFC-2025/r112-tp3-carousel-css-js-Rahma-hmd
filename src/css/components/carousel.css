@@ -6,11 +6,18 @@ img {
 
 /* Contrôles du carousel */
 .carousel__controls {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
   display: flex;
-  gap: 16px;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  margin: 16px 0;
+  pointer-events: none;
+  transform: translateY(-50%);
+  z-index: 2;
+  padding: 0 12px;
+  margin: 0;
 }
 
 .carousel__button {
@@ -24,6 +31,7 @@ img {
   background: white;
   cursor: pointer;
   transition: background-color 0.3s;
+  pointer-events: auto;
 }
 
 .carousel__button:hover {
