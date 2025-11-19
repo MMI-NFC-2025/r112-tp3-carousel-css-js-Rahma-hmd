@@ -1,128 +1,116 @@
-/* Limite la largeur maximale de l'image à 100% de son conteneur - https://developer.mozilla.org/fr/docs/Web/CSS/max-width */
-/* Ajuste la hauteur de l'image automatiquement pour conserver les proportions - https://developer.mozilla.org/fr/docs/Web/CSS/height */
-img {
-  max-width: 100%;
-  height: auto;
-}
-
-/* Compléter la suite du code */
-.carousel__controls {
-  /* Utilise flexbox pour aligner les éléments enfants - https://developer.mozilla.org/fr/docs/Web/CSS/display */
-  display: flex;
-
-  /* Espace entre les éléments enfants 16px- https://developer.mozilla.org/fr/docs/Web/CSS/gap */
-  gap: 16px;
-
-  /* Aligne les éléments enfants au centre verticalement - https://developer.mozilla.org/fr/docs/Web/CSS/align-items */
-  align-items: center;
-
-  /* Centre les éléments enfants horizontalement - https://developer.mozilla.org/fr/docs/Web/CSS/justify-content */
-  justify-content: center;
-
-  /* Marge de 16px en haut et en bas - https://developer.mozilla.org/fr/docs/Web/CSS/margin */
-  margin: 16px 0;
-}
-
-.carousel__button {
-  /* Largeur du bouton 50px - https://developer.mozilla.org/fr/docs/Web/CSS/width */
-  width: 50px;
-
-  /* Hauteur du bouton 50px - https://developer.mozilla.org/fr/docs/Web/CSS/height */
-  height: 50px;
-
-  /* Utilise flexbox pour aligner le contenu du bouton - https://developer.mozilla.org/fr/docs/Web/CSS/display */
-  display: flex;
-
-  /* Aligne le contenu du bouton au centre verticalement - https://developer.mozilla.org/fr/docs/Web/CSS/align-items */
-  align-items: center;
-
-  /* Centre le contenu du bouton horizontalement - https://developer.mozilla.org/fr/docs/Web/CSS/justify-content */
-  justify-content: center;
-
-  /* Bordure solide de 1px - https://developer.mozilla.org/fr/docs/Web/CSS/border */
-  border: 1px solid;
-
-  /* Bordure arrondie pour faire un cercle - https://developer.mozilla.org/fr/docs/Web/CSS/border-radius */
-  border-radius: 50%;
-}
-
-.carousel__button--prev {
-  /* Fait pivoter le bouton de 180 degrés - https://developer.mozilla.org/fr/docs/Web/CSS/transform */
-  transform: rotate(180deg);
-}
-
-.carousel__container {
-  /* Utilise flexbox pour aligner les éléments enfants - https://developer.mozilla.org/fr/docs/Web/CSS/display */
-  display: flex;
-
-  /* Espace entre les éléments enfants 16px - https://developer.mozilla.org/fr/docs/Web/CSS/gap */
-  gap: 16px;
-
-  /* Ajoute un défilement horizontal si le contenu déborde - https://developer.mozilla.org/fr/docs/Web/CSS/overflow */
-  overflow-x: scroll;
-
-  /* Marge négative à gauche pour coller le carousel au bord de l'écran -24px - https://developer.mozilla.org/fr/docs/Web/CSS/margin */
-  margin-left: -24px;
-
-  /* Marge négative à droite pour coller le carousel au bord de l'écran -24px - https://developer.mozilla.org/fr/docs/Web/CSS/margin */
-  margin-right: -24px;
-
-  /* Définit le type de défilement pour accrocher les éléments - https://developer.mozilla.org/fr/docs/Web/CSS/scroll-snap-type */
-  scroll-snap-type: x mandatory;
-}
-
-.carousel__item {
-  /* L'élément prend 1 part de l'espace disponible, ne rétrécit pas, et a une largeur de base de 260px - https://developer.mozilla.org/fr/docs/Web/CSS/flex */
-  flex: 1 0 260px;
-
-  /* Aligne l'élément au centre lors du défilement - https://developer.mozilla.org/fr/docs/Web/CSS/scroll-snap-align */
-  scroll-snap-align: center;
-}
-
-.carousel__item img {
-  /* Affiche l'image comme un bloc - https://developer.mozilla.org/fr/docs/Web/CSS/display */
-  display: block;
-}
 /* Limite la largeur maximale de l'image à 100% de son conteneur */
 img {
   max-width: 100%;
   height: auto;
 }
 
-/* Le conteneur du carousel - c'est lui qui fait tout le travail ! */
-.carousel__container {
-  /* Utilise flexbox pour aligner les éléments enfants horizontalement */
+/* Contrôles du carousel */
+.carousel__controls {
   display: flex;
-
-  /* Espace de 16px entre chaque image */
   gap: 16px;
-
-  /* ESSENTIEL : Permet le défilement horizontal quand le contenu déborde */
-  overflow-x: scroll;
-
-  /* Marges négatives pour coller le carousel aux bords de l'écran */
-  margin-left: -24px;
-  margin-right: -24px;
-
-  /* BONUS : Accrochage automatique des images lors du scroll (effet "snap") */
-  scroll-snap-type: x mandatory;
-
-  /* Padding pour compenser les marges négatives et éviter que les images soient coupées */
-  padding-left: 24px;
-  padding-right: 24px;
+  align-items: center;
+  justify-content: center;
+  margin: 16px 0;
 }
 
-/* Chaque élément du carousel */
-.carousel__item {
-  /* L'élément ne rétrécit pas et garde une largeur minimale de 260px */
-  flex: 0 0 260px;
+.carousel__button {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #333;
+  border-radius: 50%;
+  background: white;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
 
-  /* L'image s'accroche au centre lors du défilement */
+.carousel__button:hover {
+  background-color: #f0f0f0;
+}
+
+.carousel__button--prev {
+  transform: rotate(180deg);
+}
+
+/* Conteneur du carousel */
+.carousel__container {
+  display: flex;
+  gap: 16px;
+  overflow-x: scroll;
+  margin-left: -24px;
+  margin-right: -24px;
+  padding-left: 24px;
+  padding-right: 24px;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+
+  /* Cache la barre de scroll pour un meilleur visuel */
+  scrollbar-width: none;
+  /* Firefox */
+  -ms-overflow-style: none;
+  /* IE/Edge */
+}
+
+.carousel__container::-webkit-scrollbar {
+  display: none;
+  /* Chrome, Safari, Opera */
+}
+
+/* Items du carousel - TAILLES RESPONSIVE */
+.carousel__item {
+  /* Taille proportionnelle à l'écran */
+  flex: 0 0 70vw;
+  /* 70% de la largeur de l'écran sur mobile */
   scroll-snap-align: center;
 }
 
-/* Les images s'affichent en bloc pour éviter les espaces indésirables */
 .carousel__item img {
   display: block;
   width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* Garde les proportions de l'image */
+  border-radius: 8px;
+  /* Optionnel : coins arrondis */
+}
+
+/* Tablettes (écrans moyens) */
+@media (min-width: 768px) {
+  .carousel__item {
+    flex: 0 0 45vw;
+    /* 45% de la largeur de l'écran */
+  }
+}
+
+/* Desktop (grands écrans) */
+@media (min-width: 1024px) {
+  .carousel__item {
+    flex: 0 0 30vw;
+    /* 30% de la largeur de l'écran */
+    max-width: 400px;
+    /* Limite maximale pour très grands écrans */
+  }
+}
+
+/* Très grands écrans */
+@media (min-width: 1440px) {
+  .carousel__item {
+    flex: 0 0 25vw;
+    max-width: 450px;
+  }
+}
+
+/* Classe utilitaire pour masquer visuellement */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
 }
