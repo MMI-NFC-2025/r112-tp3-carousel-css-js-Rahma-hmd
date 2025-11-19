@@ -83,3 +83,46 @@ img {
   /* Affiche l'image comme un bloc - https://developer.mozilla.org/fr/docs/Web/CSS/display */
   display: block;
 }
+/* Limite la largeur maximale de l'image à 100% de son conteneur */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Le conteneur du carousel - c'est lui qui fait tout le travail ! */
+.carousel__container {
+  /* Utilise flexbox pour aligner les éléments enfants horizontalement */
+  display: flex;
+
+  /* Espace de 16px entre chaque image */
+  gap: 16px;
+
+  /* ESSENTIEL : Permet le défilement horizontal quand le contenu déborde */
+  overflow-x: scroll;
+
+  /* Marges négatives pour coller le carousel aux bords de l'écran */
+  margin-left: -24px;
+  margin-right: -24px;
+
+  /* BONUS : Accrochage automatique des images lors du scroll (effet "snap") */
+  scroll-snap-type: x mandatory;
+
+  /* Padding pour compenser les marges négatives et éviter que les images soient coupées */
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+/* Chaque élément du carousel */
+.carousel__item {
+  /* L'élément ne rétrécit pas et garde une largeur minimale de 260px */
+  flex: 0 0 260px;
+
+  /* L'image s'accroche au centre lors du défilement */
+  scroll-snap-align: center;
+}
+
+/* Les images s'affichent en bloc pour éviter les espaces indésirables */
+.carousel__item img {
+  display: block;
+  width: 100%;
+}
